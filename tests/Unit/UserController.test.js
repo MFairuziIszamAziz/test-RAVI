@@ -11,8 +11,8 @@ describe('UserController API Endpoints', () => {
 
   it('POST /users - Menambahkan pengguna baru', async () => {
     const newUser = {
-      name: 'John Doe',
-      email: 'johndoe@example.com',
+      name: 'Fairuzi Iszam',
+      email: 'fairuz@gmail.com',
       age: 28
     };
 
@@ -25,8 +25,8 @@ describe('UserController API Endpoints', () => {
 
   it('GET /users/:id - Mendapatkan pengguna berdasarkan ID', async () => {
     const newUser = await axios.post(`${baseURL}/users`, {
-      name: 'Jane Doe',
-      email: 'janedoe@example.com',
+      name: 'Dhiya Nabila',
+      email: 'Dhiya@gmail.com',
       age: 25
     });
 
@@ -35,23 +35,23 @@ describe('UserController API Endpoints', () => {
     const response = await axios.get(`${baseURL}/users/${userId}`);
     expect(response.status).toBe(200);
     expect(response.data.id).toBe(userId);
-    expect(response.data.name).toBe('Jane Doe');
-    expect(response.data.email).toBe('janedoe@example.com');
+    expect(response.data.name).toBe('Dhiya Nabila');
+    expect(response.data.email).toBe('Dhiya@gmail.com');
     expect(response.data.age).toBe(25);
   });
 
   it('PUT /users/:id - Memperbarui pengguna berdasarkan ID', async () => {
     const newUser = await axios.post(`${baseURL}/users`, {
-      name: 'Alice',
-      email: 'alice@example.com',
+      name: 'Iszam',
+      email: 'Iszam@gmail.com',
       age: 30
     });
 
     const userId = newUser.data.id;
 
     const updatedUser = {
-      name: 'Alice Updated',
-      email: 'aliceupdated@example.com',
+      name: 'Update Iszam',
+      email: 'updatediszam@gmail.com',
       age: 31
     };
 
@@ -64,8 +64,8 @@ describe('UserController API Endpoints', () => {
 
   it('DELETE /users/:id - Menghapus pengguna berdasarkan ID', async () => {
     const newUser = await axios.post(`${baseURL}/users`, {
-      name: 'Bob',
-      email: 'bob@example.com',
+      name: 'Bobi',
+      email: 'bobi23@gmail.com',
       age: 40
     });
 
