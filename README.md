@@ -20,3 +20,6 @@ git clone https://github.com/username-anda/test-RAVI.git
 cd test-RAVI
 
 ### 2. Install Dependensi
+Jalankan Composer untuk menginstal dependensi PHP yang diperlukan:
+```bash
+composer install
