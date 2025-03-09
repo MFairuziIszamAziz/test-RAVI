@@ -1,66 +1,180 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Laravel API
+Ini adalah proyek API berbasis Laravel sederhana yang dirancang untuk mengelola pengguna. Proyek ini mencakup fungsi dasar CRUD untuk pengguna, serta dokumentasi Swagger untuk API.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Persyaratan
+Sebelum menjalankan proyek ini, pastikan Anda sudah menginstal perangkat lunak berikut:
 
-## About Laravel
+PHP 8.0+
+Composer
+Laravel 10.x
+MySQL (atau database pilihan lain)
+Instruksi Instalasi
+Ikuti langkah-langkah berikut untuk menyiapkan dan menjalankan proyek ini secara lokal:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Clone Repositori
+Clone repositori proyek ke lokal Anda:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+bash
+Copy
+git clone https://github.com/username/test-RAVI.git
+cd test-RAVI
+2. Instal Dependensi
+Jalankan Composer untuk menginstal dependensi PHP yang diperlukan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+bash
+Copy
+composer install
+3. Menyiapkan Konfigurasi Environment
+Salin file .env.example ke .env:
 
-## Learning Laravel
+bash
+Copy
+cp .env.example .env
+4. Generate Application Key
+Generate application key dengan menjalankan:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+bash
+Copy
+php artisan key:generate
+5. Menyiapkan Database
+Pastikan database MySQL sudah disiapkan dan terkonfigurasi. Update file .env dengan kredensial database Anda:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+env
+Copy
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_anda
+DB_USERNAME=nama_pengguna_database_anda
+DB_PASSWORD=password_database_anda
+Setelah memperbarui file .env, jalankan perintah berikut untuk migrasi database:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+bash
+Copy
+php artisan migrate
+6. Instal Swagger (Opsional)
+Jika Anda ingin menghasilkan dan melihat dokumentasi API Swagger, instal Swagger melalui:
 
-## Laravel Sponsors
+bash
+Copy
+composer require darkaonline/l5-swagger
+Kemudian, publikasikan file konfigurasi Swagger:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+bash
+Copy
+php artisan vendor:publish --tag=l5-swagger-config
+7. Generate Dokumentasi Swagger
+Jalankan perintah berikut untuk menghasilkan dokumentasi API Swagger:
 
-### Premium Partners
+bash
+Copy
+php artisan l5-swagger:generate
+Dokumentasi Swagger dapat diakses di:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+bash
+Copy
+http://localhost:8000/api/documentation
+8. Menjalankan Server Pengembangan
+Mulai server pengembangan menggunakan perintah:
 
-## Contributing
+bash
+Copy
+php artisan serve
+Secara default, aplikasi dapat diakses di http://localhost:8000.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Endpoints API
+1. GET /api/users
+Mengambil semua pengguna.
 
-## Code of Conduct
+Contoh Respons:
+json
+Copy
+[
+    {
+        "id": 1,
+        "name": "Fairuz",
+        "email": "fairuz@gmail.com",
+        "age": 30,
+        "created_at": "2025-03-09T00:00:00",
+        "updated_at": "2025-03-09T00:00:00"
+    }
+]
+2. GET /api/users/{id}
+Mengambil pengguna berdasarkan ID.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Parameter URL:
+id (wajib): ID pengguna.
+Contoh Respons:
+json
+Copy
+{
+    "id": 1,
+    "name": "Fairuz",
+    "email": "fairuz@gmail.com",
+    "age": 30,
+    "created_at": "2025-03-09T00:00:00",
+    "updated_at": "2025-03-09T00:00:00"
+}
+3. POST /api/users
+Membuat pengguna baru.
 
-## Security Vulnerabilities
+Contoh Body Request:
+json
+Copy
+{
+    "name": "dhiya",
+    "email": "dhiya@gmail.com",
+    "age": 25
+}
+Contoh Respons:
+json
+Copy
+{
+    "id": 2,
+    "name": "dhiya",
+    "email": "dhiya@gmail.com",
+    "age": 25,
+    "created_at": "2025-03-09T00:00:00",
+    "updated_at": "2025-03-09T00:00:00"
+}
+4. PUT /api/users/{id}
+Memperbarui pengguna yang ada.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Parameter URL:
+id (wajib): ID pengguna yang akan diperbarui.
+Contoh Body Request:
+json
+Copy
+{
+    "name": "Fairuz Update",
+    "email": "fairuzupdate@gmail.com",
+    "age": 35
+}
+Contoh Respons:
+json
+Copy
+{
+    "id": 1,
+    "name": "Fairuz Update",
+    "email": "fairuzupdate@gmail.com",
+    "age": 35,
+    "created_at": "2025-03-09T00:00:00",
+    "updated_at": "2025-03-09T00:00:00"
+}
+5. DELETE /api/users/{id}
+Menghapus pengguna.
 
-## License
+Parameter URL:
+id (wajib): ID pengguna yang akan dihapus.
+Contoh Respons:
+json
+Copy
+{
+    "message": "User deleted successfully"
+}
+Menguji API
+Anda dapat menggunakan alat seperti Postman atau Insomnia untuk berinteraksi dengan endpoint API. Atau, Anda dapat menjalankan pengujian PHPUnit dengan:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+bash
+Copy
+php artisan test
